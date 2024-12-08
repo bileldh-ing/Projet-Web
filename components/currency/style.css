@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0;
+  color: white;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 15px;
+  width: 500px;
+  text-align: left;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Подсказки */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Позиция подсказки */
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 10px;
+  background: #fff;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border: 2px solid #00b4db;
+  box-shadow: 0 0 10px rgba(0, 180, 219, 0.5);
+}
+
+input:hover,
+select:hover {
+  transform: scale(1.02);
+}
+
+/* Кнопка */
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #00b4db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #0083b0;
+  transform: scale(1.05);
+}
+
+/* Анимация результата */
+#result {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  transition: opacity 0.5s ease-in-out;
+}
+
+@media (max-width: 400px) {
+  .container {
+    width: 90%;
+  }
+}

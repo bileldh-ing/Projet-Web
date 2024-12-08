@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&display=swap");
+
+body {
+  background-image: url("../assets/backg.jpg");
+  font-family: "Arial", sans-serif;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h5,
+h3,
+h4,
+p,
+table,
+.lead {
+  color: #ffffff;
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+a:hover {
+  color: #3498db;
+}
+
+.btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-outline-light:hover {
+  background-color: #3498db;
+  color: #001f3f;
+}
+
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #011320;
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 95%;
+  height: 95%;
+}
+#profile-username {
+  font-size: 1rem;
+}
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
+
+mark {
+  background-color: skyblue;
+  color: black;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .btn-outline-light {
+    width: 100%;
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    margin-bottom: 20px;
+  }
+  .btn-outline-light {
+    font-size: 0.9em;
+  }
+}
+.swiper-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+#dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%; /* Position it directly beneath the Profile link */
+  left: 0;
+  background-color: #000000;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  z-index: 1000;
+  width: 200px; /* Adjust the width of the dropdown to match the profile link width */
+}
+
+#dropdown-menu button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#dropdown-menu button:hover {
+  background-color: #cc0000;
+}
+
+.swiper-slide {
+  width: calc(33.33% - 20px); /* 3 cards visible, space between */
+  flex-shrink: 0;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Customize the left and right arrows */
+#left,
+#right {
+  background-color: transparent; /* Remove background color */
+  color: white; /* Set arrow color to white */
+  font-size: 1.5rem; /* Make arrows a bit bigger */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+/* Position the arrows inside the text */
+.heading-with-arrows {
+  display: inline-flex;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  position: relative;
+}
+
+#left {
+  margin-right: 10px;
+}
+
+#right {
+  margin-left: 10px;
+}
+
+.main-button {
+  margin-top: 20px;
+}

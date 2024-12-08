@@ -1,0 +1,51 @@
+.img-fluid.rounded.house {
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.modern-table {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+}
+.modern-table:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 162, 255, 0.7), 0 0 40px rgba(0, 162, 255, 0.5);
+}
+img {
+  margin-top: 50px;
+}
+img:hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 20px rgba(0, 162, 255, 0.7), 0 0 40px rgba(0, 162, 255, 0.5);
+  transform: scale(1.05);
+  border-radius: 10px;
+}
+header {
+  margin-top: 5%;
+}
+
+span {
+  font-size: 3em;
+  text-align: center;
+  line-height: 0.55em;
+  transform: translateY(-10%);
+  letter-spacing: 2px;
+  font-weight: 700;
+  font-family: "Oxanium", sans-serif;
+}
+/* Media Queries */
+@media (max-width: 768px) {
+  .img-fluid.rounded.house {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .img-fluid.rounded.house {
+    max-height: 200px;
+  }
+}

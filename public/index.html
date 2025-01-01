@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>mini-projet</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/index.css" />
+  </head>
+  <body>
+    <header class="header-area header-sticky">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <a href="index.html" class="logo">
+                <img src="assets/images/logo.png" alt="" />
+              </a>
+
+              <div class="search-input">
+                <form id="search" action="#">
+                  <input
+                    type="text"
+                    placeholder="Type Something"
+                    id="searchText"
+                    name="searchKeyword"
+                    onkeypress="handle"
+                  />
+                  <i class="fa fa-search"></i>
+                </form>
+              </div>
+
+              <ul class="nav">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a>Browse</a></li>
+                <li><a>Details</a></li>
+                <li><a>ABOUT ME</a></li>
+                <li style="position: relative">
+                  <a href="javascript:void(0)" id="profile-link">
+                    <span id="profile-username">Profile</span>
+                    <img src="assets/images/profile-header.jpg" alt="" />
+                  </a>
+                  <!-- Dropdown Menu -->
+                  <div id="dropdown-menu" class="dropdown-menu">
+                    <button id="logout-btn" class="btn btn-danger">
+                      Log out
+                    </button>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="page-content">
+            <div
+              class="main-banner"
+              style="background-image: url(assets/images/intro.png)"
+            >
+              <div class="row">
+                <div class="col-lg-7">
+                  <div class="header-text">
+                    <h6>Welcome to the World of <br />Real Estate</h6>
+                    <h4>
+                      <em>Discover</em>
+                      <span
+                        id="title"
+                        style="font-size: 3rem; font-family: poppins"
+                        >Your Dream Home</span
+                      >
+                    </h4>
+                    <div class="main-button">
+                      <a href="browse.html">Browse Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="most-popular">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div
+                    class="heading-section d-flex justify-content-between align-items-center"
+                  >
+                    <h4 class="heading-with-arrows">
+                      <em>Most Popular</em>&nbsp; Right Now
+                    </h4>
+
+                    <div class="arrows-container">
+                      <span id="left" class="custom-arrow-left"><</span>
+                      <span id="right" class="custom-arrow-right">></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-container">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img
+                          src="/assets/images/picture1.jpg"
+                          class="card-img-top card-img"
+                          alt="Modern Villa in Tunis"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title text-white">
+                            <strong>Modern Villa in Tunis</strong>
+                          </h5>
+                          <p class="card-text text-white">
+                            <mark><b>A luxury villa</b></mark> in the heart of
+                            Tunis with <i>exclusive amenities</i>.
+                          </p>
+                          <a href="house1.html" class="btn btn-outline-light"
+                            >See Details</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img
+                          src="/assets/images/picture2.jpg"
+                          class="card-img-top card-img"
+                          alt="Contemporary Villa in Sousse"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title text-white">
+                            <strong>Contemporary Villa in Sousse</strong>
+                          </h5>
+                          <p class="card-text text-white">
+                            <mark><b>A modern villa</b></mark> with stunning
+                            views of the Sousse hills.
+                          </p>
+                          <a href="house2.html" class="btn btn-outline-light"
+                            >See Details</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img
+                          src="/assets/images/picture3.jpg"
+                          class="card-img-top card-img"
+                          alt="Country House in Monastir"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title text-white">
+                            <strong>Country House in Monastir</strong>
+                          </h5>
+                          <p class="card-text text-white">
+                            <mark><b>A serene country house</b></mark> just a
+                            few <b>meters</b> from the sea.
+                          </p>
+                          <a href="house3.html" class="btn btn-outline-light"
+                            >See Details</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img
+                          src="/assets/images/picture4.jpeg"
+                          class="card-img-top card-img"
+                          alt="Luxury Mansion in Carthage"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title text-white">
+                            <strong>Luxury Mansion in Carthage</strong>
+                          </h5>
+                          <p class="card-text text-white">
+                            <mark><b>A grand mansion</b></mark> with
+                            breathtaking views over the Mediterranean.
+                          </p>
+                          <a href="house4.html" class="btn btn-outline-light"
+                            >See Details</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="swiper-slide">
+                      <div class="card">
+                        <img
+                          src="/assets/images/picture5.jpeg"
+                          class="card-img-top card-img"
+                          alt="Beachfront Villa in Djerba"
+                        />
+                        <div class="card-body">
+                          <h5 class="card-title text-white">
+                            <strong>Beachfront Villa in Djerba</strong>
+                          </h5>
+                          <p class="card-text text-white">
+                            <mark><b>Exclusive beachfront</b></mark> property
+                            perfect for luxury living.
+                          </p>
+                          <a href="house5.html" class="btn btn-outline-light"
+                            >See Details</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-12 mt-4">
+                  <div class="main-button">
+                    <a href="browse.html">Discover More Popular Homes</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="value">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4>Our value</h4>
+                </div>
+                <iframe
+                  id="value"
+                  src="components/value/value.html"
+                  style="width: 100%; border: none"
+                  scrolling="no"
+                ></iframe>
+              </div>
+            </div>
+            <div class="converter">
+              <div class="col-lg-12">
+                <div class="heading-section">
+                  <h4>Money Converter</h4>
+                </div>
+                <iframe
+                  id="currency-iframe"
+                  src="components/currency/index.html"
+                  style="width: 100%; border: none"
+                  scrolling="no"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>
+              Copyright © 2024 <a href="#">Dhahri Bilel</a> ING - A2 - GL - 04
+              &nbsp; All rights reserved
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+  </body>
+</html>

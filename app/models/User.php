@@ -1,4 +1,5 @@
 <?php
+
 class User {
     private $db;
 
@@ -76,5 +77,30 @@ class User {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
+    public function getLatestUser() {
+        try {
+            $stmt = $this->db->query("
+                SELECT username, full_name, email 
+                FROM users 
+                ORDER BY created_at DESC 
+                LIMIT 1
+            ");
+            
+            // Add debug information
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result === false) {
+                error_log("No users found in database");
+                return null;
+            }
+            
+            error_log("Found user: " . print_r($result, true));
+            return $result;
+            
+        } catch(PDOException $e) {
+            error_log("Error fetching latest user: " . $e->getMessage());
+            return null;
+        }
+    }
+    
 }
 ?>

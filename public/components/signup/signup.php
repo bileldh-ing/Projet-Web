@@ -1,3 +1,33 @@
+<?php
+session_start();
+require_once '../../../config/config.php';
+require_once '../../../app/models/Database.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $db = Database::getInstance()->getConnection();
+    
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $full_name = $_POST['full_name'];
+    $phone = $_POST['phone'];
+    
+    try {
+        $stmt = $db->prepare("INSERT INTO users (username, email, password, full_name, phone) VALUES (?, ?, ?, ?, ?)");
+        $stmt->execute([$username, $email, $password, $full_name, $phone]);
+        
+        // Set session variables
+        $_SESSION['user_id'] = $db->lastInsertId();
+        $_SESSION['username'] = $username;
+        
+        // Redirect to main.php
+        header('Location: ../../../public/main.php');
+        exit();
+    } catch (PDOException $e) {
+        $error_message = "Registration failed: " . $e->getMessage();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -84,7 +114,10 @@
   <body>
     <div class="form-container">
       <h3 class="text-center">Sign Up</h3>
-      <form id="signup-form" action="/project/public/index.php?action=addUser" method="POST">
+      <?php if (isset($error_message)): ?>
+        <div class="alert alert-danger"><?php echo htmlspecialchars($error_message); ?></div>
+      <?php endif; ?>
+      <form id="signup-form" method="POST">
         <div class="mb-3">
           <label for="username" class="form-label">Username</label>
           <div class="input-group">

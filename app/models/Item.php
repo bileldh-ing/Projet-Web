@@ -36,7 +36,19 @@ class Item {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
+    public function getItems() {
+        try {
+            $query = "SELECT id, name, price, description, image_path, seller_contact 
+                     FROM items 
+                     ORDER BY created_at DESC";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch(PDOException $e) {
+            error_log("Error fetching items: " . $e->getMessage());
+            return [];
+        }
+    }
    
 public function deleteByName($name) {
     try {

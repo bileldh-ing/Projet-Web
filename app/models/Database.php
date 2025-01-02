@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../config/config.php';
 class Database {
     private static $instance = null;
     private $connection;

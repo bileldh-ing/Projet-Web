@@ -16,6 +16,7 @@
       body {
         background: #27292a;
         color: #fff;
+
         font-family: "Arial", sans-serif;
       }
       .form-container {
@@ -45,10 +46,10 @@
         box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25);
       }
       .form-control.valid {
-        border-color: #28a745;
+        border-color: #28a745; /* Green border */
       }
       .form-control.invalid {
-        border-color: #dc3545;
+        border-color: #dc3545; /* Red border */
       }
       .input-group {
         position: relative;
@@ -58,13 +59,13 @@
         border: 2px solid #495057;
         color: #fff;
         font-size: 20px;
-        height: 50px;
-        line-height: 50px;
+        height: 50px; /* Match input height */
+        line-height: 50px; /* Vertically center the icon */
         border-radius: 12px;
       }
       .input-group .form-control {
-        height: 50px;
-        font-size: 18px;
+        height: 50px; /* Match the input height */
+        font-size: 18px; /* Adjust input text size */
         border-radius: 12px;
       }
       .btn {
@@ -80,110 +81,105 @@
       .btn-primary:hover {
         background-color: #0056b3;
       }
-      .error-message {
-        color: #dc3545;
-        font-size: 14px;
-        margin-top: 5px;
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1050;
+        width: 300px;
+      }
+      .toast-body {
+        font-weight: bold;
+      }
+      .form-container a {
+        color: #f8f9fa;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+      }
+      .form-container a:hover {
+        color: #007bff;
       }
     </style>
   </head>
   <body>
     <div class="form-container">
-      <h3 class="text-center">Sign Up</h3>
-      <form
-        id="signup-form"
-        action="/project/public/index.php?action=addUser"
-        method="POST"
-      >
+      <h3 class="text-center" style="color: #fff">Sign Up</h3>
+      <form id="signup-form">
         <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
+          <label for="username" class="form-label" style="color: #fff"
+            >Username</label
+          >
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-user"></i></span>
             <input
               type="text"
-              class="form-control"
+              class="form-control form-control-lg"
               id="username"
-              name="username"
               placeholder="Enter username"
               required
             />
           </div>
           <div id="username-error" class="error-message"></div>
         </div>
-
         <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
+          <label for="email" class="form-label" style="color: #fff"
+            >Email</label
+          >
           <div class="input-group">
             <span class="input-group-text"
               ><i class="fas fa-envelope"></i
             ></span>
             <input
               type="email"
-              class="form-control"
+              class="form-control form-control-lg"
               id="email"
-              name="email"
               placeholder="Enter email"
               required
             />
           </div>
           <div id="email-error" class="error-message"></div>
         </div>
-
         <div class="mb-3">
-          <label for="full_name" class="form-label">Full Name</label>
-          <div class="input-group">
-            <span class="input-group-text"
-              ><i class="fas fa-user-circle"></i
-            ></span>
-            <input
-              type="text"
-              class="form-control"
-              id="full_name"
-              name="full_name"
-              placeholder="Enter full name"
-              required
-            />
-          </div>
-          <div id="full_name-error" class="error-message"></div>
-        </div>
-
-        <div class="mb-3">
-          <label for="phone" class="form-label">Phone (optional)</label>
-          <div class="input-group">
-            <span class="input-group-text"><i class="fas fa-phone"></i></span>
-            <input
-              type="tel"
-              class="form-control"
-              id="phone"
-              name="phone"
-              placeholder="Enter phone number"
-            />
-          </div>
-          <div id="phone-error" class="error-message"></div>
-        </div>
-
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
+          <label for="password" class="form-label" style="color: #fff"
+            >Password</label
+          >
           <div class="input-group">
             <span class="input-group-text"><i class="fas fa-lock"></i></span>
             <input
               type="password"
-              class="form-control"
+              class="form-control form-control-lg"
               id="password"
-              name="password"
               placeholder="Enter password"
               required
             />
           </div>
           <div id="password-error" class="error-message"></div>
         </div>
-
         <button type="submit" class="btn btn-primary">Sign Up</button>
       </form>
-      <p class="text-center mt-3">
-        Already have an account?
-        <a href="login.html" style="color: #007bff">Login</a>
+      <p class="text-center mt-3" style="color: #fff">
+        Already have an account? <a href="login.html">Login</a>
       </p>
+    </div>
+
+    <div
+      id="toast"
+      class="toast align-items-center text-white"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex">
+        <div id="toast-message" class="toast-body"></div>
+        <button
+          type="button"
+          class="btn-close btn-close-white me-2 m-auto"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -193,24 +189,29 @@
         .addEventListener("submit", function (event) {
           event.preventDefault();
 
+          // Get form inputs
           const username = document.getElementById("username");
           const email = document.getElementById("email");
           const password = document.getElementById("password");
-          const fullName = document.getElementById("full_name");
 
           let isValid = true;
 
           // Clear previous errors
-          document
-            .querySelectorAll(".error-message")
-            .forEach((el) => (el.textContent = ""));
+          document.getElementById("username-error").textContent = "";
+          document.getElementById("email-error").textContent = "";
+          document.getElementById("password-error").textContent = "";
 
-          // Validate Username
+          // Validate Username (Starts with letters, can include numbers, no special characters)
           const usernamePattern = /^[A-Za-z]{3,}[A-Za-z0-9]*$/;
           if (!usernamePattern.test(username.value.trim())) {
             isValid = false;
+            username.classList.add("invalid");
+            username.classList.remove("valid");
             document.getElementById("username-error").textContent =
               "Username must start with at least 3 letters and contain no special characters.";
+          } else {
+            username.classList.add("valid");
+            username.classList.remove("invalid");
           }
 
           // Validate Email
@@ -218,28 +219,60 @@
             /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
           if (!emailPattern.test(email.value.trim())) {
             isValid = false;
+            email.classList.add("invalid");
+            email.classList.remove("valid");
             document.getElementById("email-error").textContent =
               "Please enter a valid email address.";
+          } else {
+            email.classList.add("valid");
+            email.classList.remove("invalid");
           }
 
           // Validate Password
           if (password.value.length < 6) {
             isValid = false;
+            password.classList.add("invalid");
+            password.classList.remove("valid");
             document.getElementById("password-error").textContent =
               "Password must be at least 6 characters long.";
+          } else {
+            password.classList.add("valid");
+            password.classList.remove("invalid");
           }
 
-          // Validate Full Name
-          if (fullName.value.trim().length < 2) {
-            isValid = false;
-            document.getElementById("full_name-error").textContent =
-              "Please enter your full name.";
-          }
-
+          // If all fields are valid, save user to localStorage and redirect
           if (isValid) {
-            this.submit();
+            const newUser = {
+              username: username.value,
+              email: email.value,
+              password: password.value,
+            };
+
+            // Save user to localStorage
+            localStorage.setItem("user", JSON.stringify(newUser));
+
+            // Show success toast
+            showToast("Account created successfully!", "success");
+
+            // Redirect to login page after successful signup
+            window.location.href = "login.html";
           }
         });
+
+      // Function to show Toast
+      function showToast(message, type) {
+        const toastMessage = document.getElementById("toast-message");
+        const toast = new bootstrap.Toast(document.getElementById("toast"));
+
+        toastMessage.textContent = message;
+        document
+          .getElementById("toast")
+          .classList.remove("bg-success", "bg-danger");
+        document
+          .getElementById("toast")
+          .classList.add(type === "success" ? "bg-success" : "bg-danger");
+        toast.show();
+      }
     </script>
   </body>
 </html>
